@@ -4,13 +4,9 @@
 """
 import json
 import argparse
-import sys
 from pathlib import Path
 
 BASE = Path(__file__).parent
-
-if sys.platform == "win32":
-    sys.stdout.reconfigure(encoding="utf-8")
 
 
 def main():

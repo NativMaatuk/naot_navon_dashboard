@@ -2,7 +2,7 @@
 import json
 import pandas as pd
 
-from data.paths import APARTMENTS_JSON, QUALITY_JSON, VALUE_JSON, PROJECT_JSON
+from data.paths import APARTMENTS_JSON, QUALITY_JSON, VALUE_JSON, ARCHITECTURE_JSON, PROJECT_JSON
 from utils.premium_exit import apply_premium_exit_scores
 
 
@@ -53,9 +53,44 @@ def load_apartments() -> pd.DataFrame:
         q_cols = [c for c in [
             "id", "quality_score", "score_view", "score_location", "score_planning",
             "score_rarity", "view_classification", "notes",
+            "score_interior", "score_view_plan", "architecture_notes",
+            "apartment_plan_url", "floor_plan_url",
         ] if c in qdf.columns]
         qdf = qdf[q_cols].rename(columns={"notes": "notes_quality"})
         df = df.merge(qdf, on="id", how="left")
+
+    architecture = _read_json(ARCHITECTURE_JSON)
+    if architecture:
+        adf = pd.DataFrame(architecture)
+        a_cols = [c for c in [
+            "id", "notes_he", "model", "plan_url", "floor_plan_url",
+            "subscores", "view_detail", "deduped_from",
+        ] if c in adf.columns]
+        adf = adf[a_cols].rename(columns={
+            "notes_he": "architecture_notes_detail",
+            "model": "architecture_model",
+            "plan_url": "apartment_plan_url_arch",
+            "floor_plan_url": "floor_plan_url_arch",
+        })
+        df = df.merge(adf, on="id", how="left")
+        if "apartment_plan_url_arch" in df.columns:
+            if "apartment_plan_url" not in df.columns:
+                df["apartment_plan_url"] = df["apartment_plan_url_arch"]
+            else:
+                df["apartment_plan_url"] = df["apartment_plan_url"].fillna(df["apartment_plan_url_arch"])
+            df.drop(columns=["apartment_plan_url_arch"], inplace=True)
+        if "floor_plan_url_arch" in df.columns:
+            if "floor_plan_url" not in df.columns:
+                df["floor_plan_url"] = df["floor_plan_url_arch"]
+            else:
+                df["floor_plan_url"] = df["floor_plan_url"].fillna(df["floor_plan_url_arch"])
+            df.drop(columns=["floor_plan_url_arch"], inplace=True)
+        if "architecture_notes_detail" in df.columns:
+            if "architecture_notes" not in df.columns:
+                df["architecture_notes"] = df["architecture_notes_detail"]
+            else:
+                df["architecture_notes"] = df["architecture_notes"].fillna(df["architecture_notes_detail"])
+            df.drop(columns=["architecture_notes_detail"], inplace=True, errors="ignore")
 
     value = _read_json(VALUE_JSON)
     if value:

@@ -274,6 +274,20 @@ def main():
 
     print(f"Built database: {len(apartments)} apartments, {len(documents)} documents, {len(pdfs)} PDFs")
 
+    # Link apartment/floor plan URLs from pdfs index
+    try:
+        from plan_utils import link_apartment_plans, save_json as _save_json
+        link_stats = link_apartment_plans(apartments, pdfs)
+        _save_json(apt_path, apartments)
+        db_path = BASE / "apartments_database.json"
+        _save_json(db_path, apartments)
+        print(
+            f"Linked plans: {link_stats['apartment_plan_linked']} apartment, "
+            f"{link_stats['floor_plan_linked']} floor"
+        )
+    except Exception as exc:
+        print(f"Warning: plan linking skipped: {exc}")
+
 
 def classify_doc(name):
     if not name:

@@ -47,6 +47,7 @@ desktop.ini
 .ruff_cache/
 .coverage
 htmlcov/
+naot_navon_database/04_documents/plans_cache/
 
 # Jupyter
 .ipynb_checkpoints/

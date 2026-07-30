@@ -57,3 +57,22 @@ def render_overview(df: pd.DataFrame, project: dict):
             st.write(f"**מיקום:** {project.get('location', '—')}")
             st.write(f"**מסירה:** {project.get('delivery_date', '—')}")
             st.write(f"**מחיר מטרה / שוק חופשי:** {project.get('target_price_units', '—')} / {project.get('free_market_units', '—')}")
+            source_url = project.get("source_url")
+            if source_url:
+                st.markdown(f"**אתר הפרויקט:** [{source_url}]({source_url})")
+
+    if "score_interior" in df.columns:
+        with st.expander("ניתוח אדריכלי (תכניות דירה)"):
+            analyzed = int(df["score_interior"].notna().sum())
+            with_plan = int(df["apartment_plan_url"].notna().sum()) if "apartment_plan_url" in df.columns else 0
+            a1, a2, a3 = st.columns(3)
+            a1.metric("דירות עם ניתוח אדריכלי", analyzed)
+            a2.metric("דירות עם תכנית PDF", with_plan)
+            if analyzed:
+                a3.metric("ציון תכנון פנים ממוצע", f"{df['score_interior'].mean():.1f}")
+            else:
+                a3.metric("ציון תכנון פנים ממוצע", "—")
+            st.caption(
+                "הניתוח מבוסס תכניות הדירה של דירות מחיר מטרה. "
+                "פירוט מלא לכל דירה במסך \"חוקר דירות\"."
+            )

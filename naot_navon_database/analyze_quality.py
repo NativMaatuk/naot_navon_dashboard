@@ -11,6 +11,7 @@ BASE = Path(__file__).parent
 APARTMENTS_SRC = BASE / "02_apartments" / "apartments.json"
 BUILDINGS_SRC = BASE / "03_planning" / "buildings.json"
 PROJECT_SRC = BASE / "03_planning" / "project.json"
+ARCHITECTURE_SRC = BASE / "apartments_architecture_analysis.json"
 
 TOWERS = {7, 14}
 TOWER_MAX_FLOOR = 21
@@ -151,7 +152,7 @@ def score_location(apt, building: int, floor_num: int, max_floor: int) -> tuple[
     return round(score, 1), "; ".join(notes)
 
 
-def score_view(apt, building: int, floor_num: int) -> tuple[float, str]:
+def score_view(apt, building: int, floor_num: int, arch: dict | None = None) -> tuple[float, str]:
     directions = parse_directions(apt.get("directions", ""))
     n = len(directions)
     score = 35.0
@@ -192,10 +193,19 @@ def score_view(apt, building: int, floor_num: int) -> tuple[float, str]:
             score += 6
 
     score = max(0, min(100, score))
+
+    if arch and arch.get("score_view_plan") is not None:
+        enhanced = float(arch["score_view_plan"])
+        score = round(enhanced * 0.6 + score * 0.4, 1)
+        view_detail = arch.get("view_detail") or {}
+        plan_notes = view_detail.get("notes", "")
+        if plan_notes:
+            notes.append(plan_notes)
+
     return round(score, 1), "; ".join(notes)
 
 
-def score_planning(apt) -> tuple[float, str]:
+def score_planning(apt, arch: dict | None = None) -> tuple[float, str]:
     area = parse_float(apt.get("area_sqm"))
     balcony = parse_float(apt.get("balcony_garden_sqm")) or 0
     rooms = parse_rooms(apt.get("rooms"))
@@ -238,6 +248,14 @@ def score_planning(apt) -> tuple[float, str]:
         notes.append("תכנון יחידתי יוקרתי")
 
     score = max(0, min(100, score))
+
+    if arch and arch.get("score_interior") is not None:
+        interior = float(arch["score_interior"])
+        score = round(interior * 0.7 + score * 0.3, 1)
+        arch_notes = arch.get("notes_he", "")
+        if arch_notes:
+            notes.insert(0, arch_notes)
+
     return round(score, 1), "; ".join(notes)
 
 
@@ -314,14 +332,14 @@ def overall_score(loc, view, plan, feat, rarity):
     return round(loc * 0.25 + view * 0.25 + plan * 0.20 + feat * 0.15 + rarity * 0.15, 1)
 
 
-def analyze_apartment(apt, type_counts, total):
+def analyze_apartment(apt, type_counts, total, arch: dict | None = None):
     building = int(apt["building"])
     floor_num = floor_numeric(apt.get("floor", ""))
     max_floor = TOWER_MAX_FLOOR if building in TOWERS else LOW_RISE_MAX.get(building, 7)
 
     loc_s, loc_n = score_location(apt, building, floor_num, max_floor)
-    view_s, view_n = score_view(apt, building, floor_num)
-    plan_s, plan_n = score_planning(apt)
+    view_s, view_n = score_view(apt, building, floor_num, arch=arch)
+    plan_s, plan_n = score_planning(apt, arch=arch)
     feat_s, feat_n = score_features(apt)
     rarity_s, rarity_n = score_rarity(apt, type_counts, total)
     total_s = overall_score(loc_s, view_s, plan_s, feat_s, rarity_s)
@@ -332,7 +350,7 @@ def analyze_apartment(apt, type_counts, total):
 
     all_notes = [n for n in [loc_n, view_n, plan_n, feat_n, rarity_n] if n]
 
-    return {
+    result = {
         "id": apt.get("id"),
         "apartment_number": apt.get("apartment_number"),
         "building": apt.get("building"),
@@ -359,6 +377,16 @@ def analyze_apartment(apt, type_counts, total):
         },
         "source_url": apt.get("source_url"),
     }
+
+    if arch:
+        result["score_interior"] = arch.get("score_interior")
+        result["score_view_plan"] = arch.get("score_view_plan")
+        result["architecture_notes"] = arch.get("notes_he")
+        result["architecture_model"] = arch.get("model")
+        result["apartment_plan_url"] = arch.get("plan_url") or apt.get("apartment_plan_url")
+        result["floor_plan_url"] = arch.get("floor_plan_url") or apt.get("floor_plan_url")
+
+    return result
 
 
 def setup_standard_files(apartments, project, buildings):
@@ -612,7 +640,11 @@ def write_validation(apartments, ranked):
     missing_price = [a for a in apartments if a.get("target_price") == "כן" and not a.get("final_price")]
     free_no_price = [a for a in apartments if a.get("target_price") == "לא" and not a.get("final_price")]
     no_plan = [a for a in apartments if not a.get("apartment_plan_url")]
+    target_no_plan = [a for a in apartments if a.get("target_price") == "כן" and not a.get("apartment_plan_url")]
+    with_plan = len(apartments) - len(no_plan)
+    plan_linked = len(target_no_plan) == 0 and with_plan >= 322
     null_area = [a for a in apartments if not a.get("area_sqm")]
+    arch_count = sum(1 for r in ranked if r.get("score_interior") is not None)
 
     content = f"""# דוח ביקורת נתונים — ניתוח איכות
 
@@ -627,9 +659,9 @@ def write_validation(apartments, ranked):
 | ללא שטח דירה | {len(null_area)} | {'✅' if not null_area else '⚠️'} |
 | ללא כיווני אוויר | {len([a for a in apartments if not a.get('directions')])} | ✅ |
 | ללא מספר חדרים | {len([a for a in apartments if not a.get('rooms')])} | ✅ |
-| ללא תוכנית דירה (URL) | {len(no_plan)} | ⚠️ כל 401 הדירות |
+| ללא תוכנית דירה (URL) | {len(no_plan)} | {'✅ מחיר מטרה מכוסה' if not target_no_plan else '⚠️'} |
 
-**הערה:** קישורי תוכנית דירה/קומה לא מופיעים בטבלת המחירון באתר. קיימים 469 קבצי PDF בנתיב נפרד שלא מקושרים לרשומות.
+**הערה:** {with_plan} דירות מקושרות לתכנית PDF (322 מחיר מטרה). {len(no_plan)} דירות שוק חופשי ללא תכנית באינדקס. ניתוח אדריכלי: {arch_count} דירות.
 
 ---
 
@@ -656,13 +688,13 @@ def write_validation(apartments, ranked):
 
 ---
 
-## 4. תשריטים חסרים
+## 4. תשריטים
 
 | פריט | סטטוס |
 |------|--------|
-| תוכנית דירה בטבלה | חסר בכל 401 הרשומות |
-| תוכנית קומה בטבלה | חסר בכל 401 הרשומות |
-| PDFים זמינים | 469 קבצים בנתיב theme/data — לא מקושרים לרשומות |
+| תוכנית דירה מקושרת (מחיר מטרה) | {322 - len(target_no_plan)}/322 |
+| תוכנית דירה שוק חופשי | 0/79 (מחוץ להיקף ראשוני) |
+| ניתוח אדריכלי שמור | {arch_count} רשומות |
 
 ---
 
@@ -672,7 +704,7 @@ def write_validation(apartments, ranked):
 |--------|--------|
 | אין נתוני מעלית/לובי | ציון מיקום מוערך לפי קומה ומבנה בלבד |
 | אין אימות כיוון אמיתי למבנה | נוף ים מוערך לפי כיווני אוויר + מיקום שכונה |
-| אין תשריט פנימי | ציון תכנון מבוסס שטחים בלבד, לא חלוקה פנימית |
+| אין תשריט פנימי | {'מכוסה ל-' + str(arch_count) + ' דירות מחיר מטרה' if arch_count else 'ציון תכנון מבוסס שטחים בלבד, לא חלוקה פנימית'} |
 | אין נתוני רעש/רחוב | לא נכלל בניתוח |
 
 ---
@@ -684,7 +716,7 @@ def write_validation(apartments, ranked):
 | כל 401 דירות נותחו | ✅ |
 | ניתוח איכות הושלם | ✅ |
 | מחירי מחיר מטרה שלמים | ✅ |
-| תשריטים מקושרים לדירות | ❌ |
+| תשריטים מקושרים לדירות | {'✅' if plan_linked else '❌'} |
 | סתירות שזוהו | 3 (מתועדות לעיל) |
 
 *דוח ביקורת נתונים — ללא המלצת השקעה.*
@@ -699,14 +731,22 @@ def main():
 
     setup_standard_files(apartments, project, buildings)
 
+    arch_by_id = {}
+    if ARCHITECTURE_SRC.exists():
+        arch_by_id = {r["id"]: r for r in load_json(ARCHITECTURE_SRC)}
+
     type_counts = Counter(a["apartment_type"] for a in apartments)
     total = len(apartments)
 
     analyses = []
     for apt in apartments:
-        a = analyze_apartment(apt, type_counts, total)
+        arch = arch_by_id.get(apt.get("id"))
+        a = analyze_apartment(apt, type_counts, total, arch=arch)
         a["target_price"] = apt.get("target_price")
         a["final_price"] = apt.get("final_price")
+        if not arch:
+            a["apartment_plan_url"] = apt.get("apartment_plan_url")
+            a["floor_plan_url"] = apt.get("floor_plan_url")
         analyses.append(a)
 
     ranked = sorted(analyses, key=lambda x: x["quality_score"], reverse=True)

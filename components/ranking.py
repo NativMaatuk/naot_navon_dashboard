@@ -22,6 +22,8 @@ def _pros_cons(row: pd.Series) -> tuple[list[str], list[str]]:
         pros.append(f"מחיר למ\"ר מתחת לממוצע ({row['deviation_from_project_pct']:+.1f}%)")
     if pd.notna(row.get("score_view")) and row["score_view"] >= 75:
         pros.append("נוף / כיווני אוויר מוערכים")
+    if pd.notna(row.get("score_interior")) and row["score_interior"] >= 75:
+        pros.append(f"תכנון פנים טוב ({row['score_interior']:.1f})")
 
     if pd.notna(row.get("deviation_from_project_pct")) and row["deviation_from_project_pct"] > 5:
         cons.append(f"מחיר למ\"ר מעל ממוצע הפרויקט ({row['deviation_from_project_pct']:+.1f}%)")
@@ -91,7 +93,23 @@ def render_ranking(df: pd.DataFrame):
             st.write(f"Quality: {row.get('quality_score', '—')}")
             st.write(f"Value: {row.get('value_score', '—')}")
             st.write(f"Premium Exit: {row.get('premium_exit_score', '—')}")
+            st.write(f"תכנון פנים: {format_number(row.get('score_interior'), 1) if pd.notna(row.get('score_interior')) else '—'}")
+            st.write(f"נוף (מתכנית): {format_number(row.get('score_view_plan'), 1) if pd.notna(row.get('score_view_plan')) else '—'}")
             st.write(f"מיקום מחיר: {row.get('price_position', '—')}")
+
+        plan_url = row.get("apartment_plan_url")
+        if plan_url and pd.notna(plan_url):
+            st.markdown(f"**תכנית דירה:** [{plan_url}]({plan_url})")
+        floor_url = row.get("floor_plan_url")
+        if floor_url and pd.notna(floor_url):
+            st.markdown(f"**תכנית קומה:** [{floor_url}]({floor_url})")
+
+        arch_notes = row.get("architecture_notes")
+        if arch_notes and pd.notna(arch_notes):
+            st.markdown("**ניתוח אדריכלי:**")
+            st.write(arch_notes)
+        elif not plan_url or pd.isna(plan_url):
+            st.caption("אין ניתוח אדריכלי לדירה זו — תכנית דירה לא פורסמה באתר (דירת שוק חופשי).")
 
         if pd.notna(row.get("premium_exit_score")):
             st.markdown("**למה דורגה גבוה (Premium Exit):**")
