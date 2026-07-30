@@ -1,7 +1,10 @@
 from pathlib import Path
 
 DASHBOARD_ROOT = Path(__file__).resolve().parent.parent
-DATABASE_ROOT = DASHBOARD_ROOT.parent / "naot_navon_database"
+
+_LOCAL_DB = DASHBOARD_ROOT / "naot_navon_database"
+_SIBLING_DB = DASHBOARD_ROOT.parent / "naot_navon_database"
+DATABASE_ROOT = _LOCAL_DB if _LOCAL_DB.exists() else _SIBLING_DB
 
 APARTMENTS_JSON = DATABASE_ROOT / "apartments_database.json"
 QUALITY_JSON = DATABASE_ROOT / "apartments_quality_analysis.json"
