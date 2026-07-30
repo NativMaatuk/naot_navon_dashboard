@@ -1,0 +1,429 @@
+[
+  {
+    "building_number": "1",
+    "plot_number": "228",
+    "apartment_count": 12,
+    "apartment_types": [
+      "1-A",
+      "1-B",
+      "1-B-1",
+      "1-C",
+      "1-C-1",
+      "1-D"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "target_price_apartments": 10,
+    "free_market_apartments": 2,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "2",
+    "plot_number": "228",
+    "apartment_count": 20,
+    "apartment_types": [
+      "2-A",
+      "2-B",
+      "2-C",
+      "2-C-1",
+      "2-D",
+      "2-D-1",
+      "2-E",
+      "2-E-1",
+      "2-F",
+      "2-G",
+      "2-H"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "target_price_apartments": 15,
+    "free_market_apartments": 5,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "3",
+    "plot_number": "228",
+    "apartment_count": 20,
+    "apartment_types": [
+      "3-A",
+      "3-B",
+      "3-C",
+      "3-D",
+      "3-E",
+      "3-F",
+      "3-G"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "target_price_apartments": 16,
+    "free_market_apartments": 4,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "4",
+    "plot_number": "228",
+    "apartment_count": 17,
+    "apartment_types": [
+      "3-CM",
+      "3-DM",
+      "3-EM",
+      "3-FM",
+      "3-GM",
+      "3ב-A",
+      "3ב-B"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "target_price_apartments": 13,
+    "free_market_apartments": 4,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "5",
+    "plot_number": "228",
+    "apartment_count": 20,
+    "apartment_types": [
+      "3-C",
+      "3-D",
+      "3-E",
+      "3-F",
+      "3-G",
+      "3-H",
+      "3-I"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "target_price_apartments": 16,
+    "free_market_apartments": 4,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "6",
+    "plot_number": "228",
+    "apartment_count": 20,
+    "apartment_types": [
+      "3-CM",
+      "3-DM",
+      "3-EM",
+      "3-FM",
+      "3-GM",
+      "3-JM",
+      "3-KM"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "target_price_apartments": 16,
+    "free_market_apartments": 4,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "7",
+    "plot_number": "228",
+    "apartment_count": 93,
+    "apartment_types": [
+      "4-A",
+      "4-B",
+      "4-C",
+      "4-C-2",
+      "4-D",
+      "4-D-2",
+      "4-E",
+      "4-E-1",
+      "4-F",
+      "4-G",
+      "4-G-1",
+      "4-H",
+      "4-I",
+      "4-K",
+      "4-L",
+      "4-M",
+      "4-N",
+      "4-O"
+    ],
+    "floors": [
+      "1",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "2",
+      "20",
+      "21",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "target_price_apartments": 76,
+    "free_market_apartments": 17,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "8",
+    "plot_number": "229",
+    "apartment_count": 20,
+    "apartment_types": [
+      "2-C",
+      "2-C-1",
+      "2-D",
+      "2-D-1",
+      "2-E",
+      "2-E-1",
+      "2-F",
+      "2-G",
+      "2-H",
+      "2-I",
+      "2-K"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "target_price_apartments": 15,
+    "free_market_apartments": 5,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "9",
+    "plot_number": "229",
+    "apartment_count": 12,
+    "apartment_types": [
+      "5-A",
+      "5-B",
+      "5-B-1",
+      "5-C",
+      "5-C-1",
+      "5-D"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "target_price_apartments": 10,
+    "free_market_apartments": 2,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "10",
+    "plot_number": "229",
+    "apartment_count": 20,
+    "apartment_types": [
+      "3-C",
+      "3-D",
+      "3-E",
+      "3-F",
+      "3-G",
+      "3-M",
+      "3-N"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "target_price_apartments": 16,
+    "free_market_apartments": 4,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "11",
+    "plot_number": "229",
+    "apartment_count": 20,
+    "apartment_types": [
+      "3-CM",
+      "3-DM",
+      "3-EM",
+      "3-FM",
+      "3-GM",
+      "3-OM",
+      "3-PM"
+    ],
+    "floors": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "קרקע+ מרתף"
+    ],
+    "target_price_apartments": 16,
+    "free_market_apartments": 4,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "12",
+    "plot_number": "229",
+    "apartment_count": 12,
+    "apartment_types": [
+      "5-A",
+      "5-B",
+      "5-B-1",
+      "5-C",
+      "5-C-1",
+      "5-D"
+    ],
+    "floors": [
+      "קרקע",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "target_price_apartments": 10,
+    "free_market_apartments": 2,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "13",
+    "plot_number": "229",
+    "apartment_count": 20,
+    "apartment_types": [
+      "2-C",
+      "2-C-1",
+      "2-D",
+      "2-D-1",
+      "2-E",
+      "2-E-1",
+      "2-F",
+      "2-G",
+      "2-H",
+      "2-L",
+      "2-M"
+    ],
+    "floors": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "קרקע+ מרתף"
+    ],
+    "target_price_apartments": 15,
+    "free_market_apartments": 5,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  },
+  {
+    "building_number": "14",
+    "plot_number": "229",
+    "apartment_count": 95,
+    "apartment_types": [
+      "4-F",
+      "4-G",
+      "4-G-1",
+      "4-H",
+      "4-I",
+      "4-K",
+      "4-L",
+      "4-M",
+      "4-N",
+      "4-O",
+      "4-P",
+      "4-Q",
+      "4-T",
+      "4-T-1"
+    ],
+    "floors": [
+      "1",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "2",
+      "20",
+      "21",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "target_price_apartments": 78,
+    "free_market_apartments": 17,
+    "source_url": "https://shoval-haifa.webzsites.site/#priceListD"
+  }
+]

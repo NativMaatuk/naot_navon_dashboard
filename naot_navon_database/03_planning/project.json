@@ -1,0 +1,57 @@
+{
+  "project_name": "שובל טאץ' - נאות נבון חיפה",
+  "developer": "קבוצת שובל (שובל מתחמי מגורים בע\"מ)",
+  "program": "מחיר מטרה / דירה בהנחה",
+  "lottery_number": "2242",
+  "total_buildings": 14,
+  "total_units": 401,
+  "target_price_units": 322,
+  "free_market_units": 79,
+  "room_types": [
+    "3",
+    "4",
+    "5",
+    "5.5",
+    "6"
+  ],
+  "building_types": {
+    "towers_22_floors": [
+      7,
+      14
+    ],
+    "buildings_8_floors": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  "plots": [
+    "228",
+    "229"
+  ],
+  "location": "נאות נבון, דרום מערב חיפה",
+  "delivery_date": "15/02/2030",
+  "payment_schedule": {
+    "contract_signing": "7%",
+    "within_45_days": "13%",
+    "linear": "70%",
+    "before_delivery": "10% (14 days before delivery)"
+  },
+  "contact": {
+    "phone": "077-9614415",
+    "email": "shoval.haifa2242@gmail.com"
+  },
+  "source_url": "https://shoval-haifa.webzsites.site/",
+  "scan_date": "2026-07-29",
+  "apartments_in_database": 401,
+  "missing_data_notes": []
+}

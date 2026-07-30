@@ -1,0 +1,28 @@
+{
+  "scan_date": "2026-07-29",
+  "checks": {
+    "all_pages_scanned": {
+      "status": true,
+      "details": "אתר חד-עמודי (SPA) - כל 11 הסקציות נסרקו: היזם, השכונה, מפות ותרשימים, הפרויקט, תהליך הרכישה, פריסת תשלומים, משכנתה, מחירון, תכניות, מסמכים, צור קשר"
+    },
+    "all_documents_found": {
+      "status": true,
+      "documents_count": 13,
+      "pdfs_count": 469
+    },
+    "all_apartments_in_database": {
+      "status": true,
+      "expected": 401,
+      "actual": 401
+    },
+    "all_data_has_source": {
+      "status": true,
+      "note": "כל רשומה כוללת source_url"
+    },
+    "missing_data": {
+      "neighborhood_section": "סקציית השכונה ריקה באתר - לא נמצא מקור מידע",
+      "apartment_plan_links_in_table": "עמודות תוכנית דירה/קומה בטבלה ריקות - קישורי PDF קיימים במבנה נפרד",
+      "faq": "לא נמצא מקור מידע - אין סקציית FAQ באתר"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "scan_date": "2026-07-29",
+  "note": "מידע בלבד - ללא מסקנות או ניתוח",
+  "sources": [
+    {
+      "source_name": "אתר שובל יזמים",
+      "url": "https://www.shoval-investments.co.il/%D7%A9%D7%95%D7%91%D7%9C-%D7%98%D7%90%D7%A6-%D7%A0%D7%90%D7%95%D7%AA-%D7%A0%D7%91%D7%95%D7%9F-%D7%97%D7%99%D7%A4%D7%94/",
+      "source_type": "developer_website",
+      "date_accessed": "2026-07-29",
+      "information_collected": {
+        "project_name": "שובל טאץ'",
+        "location": "נאות נבון, דרום מערב חיפה",
+        "program": "דירה בהנחה",
+        "total_units": 401,
+        "total_buildings": 14,
+        "building_description": "2 מגדלים בני 22 קומות ו-12 בניינים בני 8 קומות",
+        "neighborhood_description": "שכונת נאות נבון - מדרום לנאות פרס, ליד אצטדיון סמי עופר, מול חוף הים. כוללת מרכזי מסחר, תרבות, פנאי, חינוך, תשתיות, שטחים ירוקים, שבילי אופניים והליכה",
+        "transportation": "גישה לפארק מת\"ם, תחנת הרכבת חוף הכרמל, כביש החוף, מנהרות הכרמל"
+      }
+    },
+    {
+      "source_name": "תב\"ע 304-0086512 - תב\"ע עכשיו",
+      "url": "https://www.tabanow.co.il/%D7%AA%D7%91%D7%A2/%D7%97%D7%99%D7%A4%D7%94/304-0086512",
+      "source_type": "planning_document",
+      "date_accessed": "2026-07-29",
+      "information_collected": {
+        "plan_number": "304-0086512",
+        "city": "חיפה",
+        "plot_228": {
+          "designation": "מגורים ד'",
+          "area_dunam": 11.916,
+          "building_rights_sqm": 58190,
+          "max_units": 197
+        },
+        "plot_229": {
+          "designation": "מגורים ד'",
+          "area_dunam": 10.591,
+          "building_rights_sqm": 56105,
+          "max_units": 190
+        }
+      }
+    },
+    {
+      "source_name": "עיריית חיפה - היתרי בנייה (דרך כתבות)",
+      "url": "https://nadlan.walla.co.il/item/3678184",
+      "source_type": "municipal_news",
+      "date_accessed": "2026-07-29",
+      "information_collected": {
+        "neighborhood_name": "נאות נבון (נאות פרס שלב ב')",
+        "location": "מבואות דרומיים של חיפה, בצמוד לנאות פרס",
+        "total_neighborhood_area_dunam": 749,
+        "total_planned_units": "מעל 6,000",
+        "first_permits": "553 יחידות דיור (שבירו)",
+        "additional_permits": "2,720 יחידות דיור ב-80 מבנים על 15 מגרשים",
+        "building_height": "עד 25 קומות",
+        "infrastructure": "שטחי ציבור, מעבר הולכי רגל, מבני חינוך, מרכזי תרבות",
+        "infrastructure_contractor": "יפה נוף (תשתיות), צוק ניר (פיתוח)"
+      }
+    },
+    {
+      "source_name": "משרד הבינוי והשיכון - הגרלה 2242",
+      "url": "לא נמצא מקור מידע ישיר - מידע מהאתר הרשמי ופורומים",
+      "source_type": "government_lottery",
+      "date_accessed": "2026-07-29",
+      "information_collected": {
+        "lottery_number": "2242",
+        "program": "מחיר מטרה / מחיר למשתכן",
+        "location": "מבואות דרומיים חיפה / נאות נבון",
+        "original_developer": "אפי קפיטל (לפי מקורות עקיפים)",
+        "current_developer": "קבוצת שובל",
+        "target_price_per_sqm_reported": "13,101 ש\"ח למ\"ר (לפני מע\"מ והצמדה) - מקור: פורום הסולידית, לא מאומת רשמית"
+      }
+    },
+    {
+      "source_name": "מדלן - פרויקט שובל טאץ'",
+      "url": "https://www.madlan.co.il/projects/%D7%9E%D7%92%D7%A8%D7%A9%D7%99%D7%9D_228_229_%D7%91%D7%9E%D7%91%D7%95%D7%90%D7%95%D7%AA_%D7%94%D7%93%D7%A8%D7%95%D7%9E%D7%99%D7%99%D7%9D_%D7%97%D7%99%D7%A4%D7%94",
+      "source_type": "real_estate_portal",
+      "date_accessed": "2026-07-29",
+      "information_collected": {
+        "developer": "שובל מתחמי מגורים בע\"מ",
+        "buildings": 14,
+        "floors": "8-22",
+        "units": 401,
+        "apartment_types": ["5.5 חדרים", "5 חדרים", "6 חדרים (דירת גן)"],
+        "program": "מחיר למשתכן"
+      }
+    },
+    {
+      "source_name": "רשות מקרקעי ישראל",
+      "url": "לא נמצא מקור מידע",
+      "source_type": "government",
+      "date_accessed": "2026-07-29",
+      "information_collected": null,
+      "note": "לא נמצא מידע ספציפי לפרויקט זה באתר רמ\"י"
+    },
+    {
+      "source_name": "מנהל התכנון",
+      "url": "לא נמצא מקור מידע ישיר",
+      "source_type": "planning_authority",
+      "date_accessed": "2026-07-29",
+      "information_collected": {
+        "note": "מידע תכנוני נאסף דרך תב\"ע עכשיו (תוכנית 304-0086512). לא בוצע חיפוש ישיר במערכת מנהל התכנון"
+      }
+    },
+    {
+      "source_name": "מגדילים - פיתוח השכונה",
+      "url": "https://magdilim.co.il/080120251453-2/",
+      "source_type": "news",
+      "date_accessed": "2026-07-29",
+      "information_collected": {
+        "neighborhood_total_units": "מעל 6,000",
+        "neighborhood_area": "749 דונם",
+        "additional_developers": ["קבוצת שבירו", "אשל הירדן"],
+        "shbiro_project": "~1,200 יחידות ב-45 בניינים (8 מתחמים)",
+        "transportation_projects": "חוצה ישראל, פיתוח צמתים"
+      }
+    }
+  ],
+  "planning_summary": {
+    "neighborhood": "נאות נבון (נאות פרס שלב ב')",
+    "city": "חיפה",
+    "area": "דרום מערב / מבואות דרומיים",
+    "master_plan": "304-0086512",
+    "plots_in_project": ["228", "229"],
+    "total_neighborhood_units_planned": "6,000+",
+    "total_neighborhood_area_dunam": 749,
+    "nearby_landmarks": ["אצטדיון סמי עופר", "נאות פרס", "מרכז הקונגרסים", "הר הכרמל", "חוף הים"],
+    "planned_infrastructure": [
+      "מרכזי מסחר",
+      "מוסדות חינוך",
+      "מרכזים קהילתיים",
+      "שטחים ירוקים",
+      "שבילי אופניים והליכה",
+      "חניונים תת-קרקעיים (2 קומות)",
+      "600 מ\"ר מסחר (בפרויקטים סמוכים)"
+    ],
+    "transportation": [
+      "כביש החוף",
+      "מנהרות הכרמל",
+      "תחנת הרכבת חוף הכרמל",
+      "פארק מת\"ם",
+      "חוצה ישראל (מתוכנן)"
+    ]
+  }
+}
